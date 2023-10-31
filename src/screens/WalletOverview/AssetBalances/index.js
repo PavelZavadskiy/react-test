@@ -30,7 +30,7 @@ const SORTING_FUNCTIONS = {
         }
     },
     'descending': (a, b, prop) => {
-        if (typeof a[prop] === 'string') {
+                if (typeof a[prop] === 'string') {
             if (a[prop] < b[prop]) {
                 return 1;
             }
@@ -333,7 +333,7 @@ const AssetBalances = ({ balanceData, walletType }) => {
                                     <div className={styles.col}>
                                         <div
                                             className={`sorting ${checkClassName('total_balance')}`}
-                                            onClick={() => handleSort('total_balance')}
+                                            onClick={() => handleSort('total_balance_usdt')}
                                         >
                                             {t(`${page}.sorting.totalBalance`)}
                                         </div>
@@ -341,7 +341,7 @@ const AssetBalances = ({ balanceData, walletType }) => {
                                     <div className={styles.col}>
                                         <div
                                             className={`sorting ${checkClassName('total_available')}`}
-                                            onClick={() => handleSort('total_available')}
+                                            onClick={() => handleSort('total_available_usdt')}
                                         >
                                             {t(`${page}.sorting.totalAvailable`)}
                                         </div>
@@ -349,7 +349,7 @@ const AssetBalances = ({ balanceData, walletType }) => {
                                     <div className={styles.col}>
                                         <div
                                             className={`sorting ${checkClassName('frozen')}`}
-                                            onClick={() => handleSort('frozen')}
+                                            onClick={() => handleSort('frozen_usdt')}
                                         >
                                             {t(`${page}.sorting.frozen`)}
                                         </div>
@@ -365,14 +365,20 @@ const AssetBalances = ({ balanceData, walletType }) => {
 
                                 {Object.keys(balanceData)
                                     .sort((a, b) => {
-                                        const prev = (sorting.prop === 'name') ? { ...balanceData[b], name: b } : balanceData[a];
-                                        const next = (sorting.prop === 'name') ? { ...balanceData[a], name: a } : balanceData[b];
+                                        const prev = (sorting.prop === 'name') ? { ...balanceData[b], name: b } : { ...balanceData[a], name: a, balance: Number(balanceData[a][sorting.prop])  };
+                                        const next = (sorting.prop === 'name') ? { ...balanceData[a], name: a } : { ...balanceData[b], name: b, balance: Number(balanceData[b][sorting.prop]) };
 
-                                        return (
-                                            (sorting.descending) ?
-                                                SORTING_FUNCTIONS.descending(prev, next, sorting.prop) :
-                                                SORTING_FUNCTIONS.ascending(prev, next, sorting.prop)
-                                        )
+                                        const sort = (sorting.prop === 'name') ? sorting.prop : 'balance';
+
+                                        let res = (sorting.descending) ?
+                                        SORTING_FUNCTIONS.descending(prev, next, sort) :
+                                        SORTING_FUNCTIONS.ascending(prev, next, sort);
+
+                                        if( sorting.prop !== 'name' )
+                                        if(res === 0) {
+                                            res = SORTING_FUNCTIONS.ascending(prev, next, 'name');
+                                        }            
+                                        return res;
                                     })
                                     .map((x, index) => {
                                         return (

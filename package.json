@@ -70,15 +70,14 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "env-cmd -f .env react-scripts start",
-    "start:test": "env-cmd -f .env.testing react-scripts start",
-    "build": "env-cmd -f .env react-scripts build",
-    "build:test": "env-cmd -f .env.testing react-scripts build",
+    "start": "react-scripts start",
+    "start:test": "react-scripts start",
+    "build": "react-scripts build",
+    "build:test": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build", 
-    "lint:js": "eslint src/**/*.{js,jsx}"
   },
   "eslintConfig": {
     "extends": [

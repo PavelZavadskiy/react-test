@@ -44,41 +44,41 @@ const SORTING_FUNCTIONS = {
     },
 }
 
-function randomIntFromInterval(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
+// function randomIntFromInterval(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1) + min)
+// }
 
-const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
-    <button {...props}>{children}</button>
-);
+// const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
+//     <button {...props}>{children}</button>
+// );
 
-const settings = {
-    lazyLoad: 'progressive',
-    infinite: true,
-    variableWidth: true,
-    adaptiveHeight: true,
-    slidesToScroll: 1,
-    speed: 500,
-    responsive: [
-        {
-            breakpoint: 767,
-            settings: {
-                slidesToShow: 1,
-            }
-        }
-    ],
+// const settings = {
+//     lazyLoad: 'progressive',
+//     infinite: true,
+//     variableWidth: true,
+//     adaptiveHeight: true,
+//     slidesToScroll: 1,
+//     speed: 500,
+//     responsive: [
+//         {
+//             breakpoint: 767,
+//             settings: {
+//                 slidesToShow: 1,
+//             }
+//         }
+//     ],
 
-    nextArrow: (
-        <SlickArrow>
-            <Icon name="arrow-next" size="18" />
-        </SlickArrow>
-    ),
-    prevArrow: (
-        <SlickArrow>
-            <Icon name="arrow-prev" size="18" />
-        </SlickArrow>
-    ),
-};
+//     nextArrow: (
+//         <SlickArrow>
+//             <Icon name="arrow-next" size="18" />
+//         </SlickArrow>
+//     ),
+//     prevArrow: (
+//         <SlickArrow>
+//             <Icon name="arrow-prev" size="18" />
+//         </SlickArrow>
+//     ),
+// };
 
 /**
  *
@@ -111,7 +111,7 @@ const AssetBalances = ({ balanceData, walletType }) => {
     /**
      * Get data from global store
      */
-    const all_icon = useSelector(state => state.config.all_icon);
+    // const all_icon = useSelector(state => state.config.all_icon);
     const accountInfo = useSelector(state => state.user.account_info);
     const verificationData = useSelector(state => state.user.verification_data);
     const currency_data = useSelector(state => state.config.currency_data);
@@ -123,14 +123,19 @@ const AssetBalances = ({ balanceData, walletType }) => {
      *
      */
     const [type, setType] = React.useState("list");
-    const [currencyId, setCurrencyId] = useState('USDT');
-    const [visibleWithdraw, setVisibleWithdraw] = useState(false);
-    const [visibleTransfer, setVisibleTransfer] = useState(false);
+    const [, setCurrencyId] = useState('USDT');
+    const [, setVisibleWithdraw] = useState(false);
+    const [, setVisibleTransfer] = useState(false);
+    // const [currencyId, setCurrencyId] = useState('USDT');
+    // const [visibleWithdraw, setVisibleWithdraw] = useState(false);
+    // const [visibleTransfer, setVisibleTransfer] = useState(false);
     // const [visibleDeposit, setVisibleDeposit] = useState(false);
-    const [visibleHistory, setVisibleHistory] = useState(false);
+   // const [visibleHistory, setVisibleHistory] = useState(false);
+    const [, setVisibleHistory] = useState(false);
     const [hideSmallBalance, setHideSmallBalance] = useState(smallBalances.hide);
     const [sorting, setSorting] = useState({ prop: 'total_available_usdt_num', descending: true });
-    const [sortedBalanceData, setSortedBalanceData] = useState({});
+    // const [sortedBalanceData, setSortedBalanceData] = useState({});
+    const [, setSortedBalanceData] = useState({});
 
     /**
      * @type {{component: (function(*): *)}}
@@ -249,7 +254,7 @@ const AssetBalances = ({ balanceData, walletType }) => {
                 }
             });
         }
-    }, [accountSetting]);
+    }, [accountSetting, dispatch, storedHideSmallBalance, walletType]);
 
     /**
      *
@@ -271,7 +276,7 @@ const AssetBalances = ({ balanceData, walletType }) => {
                 })
             )
         }
-    }, [balanceData]);
+    }, [balanceData, sorting.prop]);
 
     /**
      * Render HTML

@@ -133,7 +133,7 @@ const AssetBalances = ({ balanceData, walletType }) => {
    // const [visibleHistory, setVisibleHistory] = useState(false);
     const [, setVisibleHistory] = useState(false);
     const [hideSmallBalance, setHideSmallBalance] = useState(smallBalances.hide);
-    const [sorting, setSorting] = useState({ prop: 'total_available_usdt_num', descending: true });
+    const [sorting, setSorting] = useState({ prop: 'name', descending: true });
     // const [sortedBalanceData, setSortedBalanceData] = useState({});
     const [, setSortedBalanceData] = useState({});
 

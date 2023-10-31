@@ -29,9 +29,9 @@ const WalletOverview = () => {
      *
      * @type {{}}
      */
-    const walletNames = {
-        spot: 'Spot',
-    };
+    // const walletNames = {
+    //     spot: 'Spot',
+    // };
 
     /**
      * Get params from URL
@@ -80,8 +80,11 @@ const WalletOverview = () => {
      *
      */
     useEffect(() => {
+        const walletNames = {
+            spot: 'Spot',
+        };
         setWalletName(walletNames[walletType]);
-    }, [walletNames, walletType]);
+    }, [walletType]);
 
     /**
      *

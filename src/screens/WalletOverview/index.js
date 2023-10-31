@@ -74,14 +74,14 @@ const WalletOverview = () => {
      */
     useEffect(() => {
         dispatch(fetchUserBalances());
-    }, []);
+    }, [dispatch]);
 
     /**
      *
      */
     useEffect(() => {
         setWalletName(walletNames[walletType]);
-    }, [walletType]);
+    }, [walletNames, walletType]);
 
     /**
      *
@@ -106,7 +106,7 @@ const WalletOverview = () => {
             }, {});
 
         setFilteredBalances(filtered);
-    }, [JSON.stringify(balances), search, walletType]);
+    }, [balances, search, walletType]);
 
     /**
      * Check balances and display preloader

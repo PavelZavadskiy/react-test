@@ -9,7 +9,7 @@ const initialState = {
     list_orders_transfer: [],
 };
 
-export default function (state = initialState, action) {
+export default function wallet (state = initialState, action) {
     const data = action.payload;
 
     switch (action.type) {

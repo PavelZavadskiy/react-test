@@ -1,5 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import cn from "classnames";
@@ -13,7 +14,7 @@ const Wallet = ({ className, children }) => {
     /**
      * @type {Dispatch<AnyAction>}
      */
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     /**
      *

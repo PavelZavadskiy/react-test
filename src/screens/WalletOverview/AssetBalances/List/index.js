@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import toast from "react-hot-toast";
+// import { Link, useHistory } from "react-router-dom";
+// import toast from "react-hot-toast";
 
 import styles from "./List.module.sass";
 import cn from "classnames";
